@@ -30,9 +30,9 @@
         <div class="col-sm-10">
           <%= f.select :age,
                        options_for_select([
-                                              ["20", "20"],
-                                              ["30", "30"],
-                                              ["40", "40"],
+                                              ['ハタチ', 20],
+                                              ['アラサー' , 30],
+                                              ['アラフォー', 40],
                                           ]),
                        {prompt: "選択してください。"},
                        {class: "form-control", autofocus: true} %>
