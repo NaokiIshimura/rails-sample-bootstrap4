@@ -6,12 +6,10 @@
   <%= render 'layouts/shim' %>
 </head>
 <body>
-<%= render 'layouts/header' %>
-<div class="container body">
-  <%= yield %>
-</div>
-<div class="container footer">
-  <%= render 'layouts/footer' %>
-</div>
+  <%= render 'layouts/header' %>
+  <main role="main">
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+  </main>
 </body>
 </html>
