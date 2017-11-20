@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= full_title(yield(:title)) %></title>
-    <%= render 'layouts/rails_default' %>
-    <%= render 'layouts/shim' %>
-  </head>
-  <body>
-    <%= render 'layouts/header' %>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= render 'layouts/rails_default' %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+<%= render 'layouts/header' %>
+<% if request.path_info == root_path %>
     <main role="main">
-    <% if request.path_info == root_path %>
       <%= yield %>
       <%= render 'layouts/footer' %>
-    <% else %>
-      <div class="container body">
-        <%= yield %>
-        <hr class="featurette-divider">
-      </div>
-      <%= render 'layouts/footer' %>
-    <% end %>
     </main>
+<% else %>
+    <div class="container body">
+      <%= yield %>
+      <hr class="featurette-divider">
+    </div>
+    <%= render 'layouts/footer' %>
+<% end %>
 </body>
 </html>
