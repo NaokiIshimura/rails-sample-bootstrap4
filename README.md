@@ -12,3 +12,4 @@ https://nameless-peak-15566.herokuapp.com
 - [Bootstrap4 tooltip with image](https://codepen.io/NaokiIshimura/pen/XzOJBL)
 - [Bootstrap4 tab](https://codepen.io/NaokiIshimura/pen/WXWymY)
 - [Bootstrap4 two\-pane\-tab](https://codepen.io/NaokiIshimura/pen/rpBXKx)
+- [Bootstrap4 clickable table row](https://codepen.io/NaokiIshimura/pen/aEvQPY)
