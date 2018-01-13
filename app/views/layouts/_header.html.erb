@@ -26,6 +26,11 @@
           <a class="nav-link" href="<%= form_path %>">Form</a>
         </li>
 
+        <li class="nav-item <%= 'active' if request.path_info == map_path %>">
+          <a class="nav-link" href="<%= map_path %>">Map</a>
+        </li>
+
+
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Dropdown

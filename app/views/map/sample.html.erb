@@ -1,0 +1,152 @@
+<style>
+  html {
+    height: 100%;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  /* giving height to table and row in bootstrap */
+  /* https://stackoverflow.com/questions/20612535/giving-height-to-table-and-row-in-bootstrap */
+
+
+  table{
+    height:100%;
+    width: 100%;
+    display: -moz-groupbox;
+  }
+
+  tbody{
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+  }
+
+  tr {
+    width: 100%;
+    display: inline-table;
+    height:60px;
+
+    background-color: white;
+    /* 行間 */
+    margin-bottom: 5px;
+  }
+
+</style>
+
+<div style="width:100%; height:100%;">
+  <div id="map" style="width:100%; height:100%;"></div>
+  <div style="position: absolute;
+      top: 60%;
+      left: 5%;
+      width:90%; height:35%;">
+
+    <table class="table">
+      <tbody>
+      <tr>
+        <th>test</th>
+        <th>test</th>
+        <th>test</th>
+      </tr>
+      <% @location.each_with_index do |l, i|%>
+          <tr class="table-row" data-idx="<%= i %>">
+            <td><%= i %></td>
+            <td><%=l[:lat]%></td>
+            <td><%=l[:lng]%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+    var map = null;
+    var infowindow = null;
+    var gmarkers = [];
+    var i = 0;
+    // 地図のインスタンスを作成する
+    function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: <%=@center[:lat]%> - 0.006 , lng: <%=@center[:lng]%>},
+            zoom: <%=@zoom%>,
+            mapTypeControl: false,
+        });
+        // 地図の中心点にマーカーを設置する
+        var marker = new google.maps.Marker({
+            map: map,	// 地図
+            position: new google.maps.LatLng(<%=@center[:lat]%>, <%=@center[:lng]%>),
+        });
+        // 地図の中心点に円を設置する
+        var circle = new google.maps.Circle({
+            center: new google.maps.LatLng(<%=@center[:lat]%>, <%=@center[:lng]%>),
+            map: map,	// 設置する地図
+            radius: <%=@radius%>,
+            strokeColor: "red", // 円の線の色
+            fillColor: "red", // 円の塗りつぶしの色
+            strokeWeight: 1, // 円の線の太さ
+        });
+        // マーカーを設置する
+        google.maps.event.addListener(map, "click", function () {infowindow.close();});
+        <% @location.each_with_index do |l, i|%>
+          var point = new google.maps.LatLng(<%=l[:lat]%>, <%=l[:lng]%>);
+          var marker = create_maker(point, "<a href='#ttl01' target='_top'>タイトル<%= i %></a>");
+        <% end %>
+        infowindow = new google.maps.InfoWindow();
+    }
+    function create_maker(latlng, html) {
+        // マーカーを生成
+        var marker = new google.maps.Marker({position: latlng, map: map, animation: google.maps.Animation.DROP});
+        // マーカーをクリックした時の処理
+        google.maps.event.addListener(marker, "click", function () {
+            // マーカーをバウンスさせる
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function(){ marker.setAnimation(null); }, 750);
+            // ウィンドウを開く
+            infowindow.setContent(html);
+            infowindow.open(map, marker);
+        });
+        gmarkers[i] = marker;
+        i++;
+        return marker;
+    }
+    function map_click(i) {
+        google.maps.event.trigger(gmarkers[i], "click");
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"
+        async defer></script>
+
+<style>
+  .table-row {
+    cursor: pointer;
+  }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $(".table-row").click(function () {
+            //window.document.location = $(this).data("href");
+            console.log('click');
+
+            // data-idx に指定されてる値を取得
+            i = $(this).data("idx");
+            console.log(i);
+
+            // markerの緯度経度を取得
+            var pos = gmarkers[i].getPosition();
+            var lat = pos.lat();
+            var lng = pos.lng();
+
+            console.log(lat);
+            console.log(lng);
+
+            // 中心位置を変更
+            map.panTo(new google.maps.LatLng(lat - 0.006 ,lng));
+            // ウィンドウを開く
+            google.maps.event.trigger(gmarkers[i], "click");
+        });
+    });
+</script>

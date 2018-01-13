@@ -12,6 +12,11 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
     </main>
+
+<% elsif request.path_info == map_path %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+
 <% else %>
     <div class="container body">
       <%= yield %>
