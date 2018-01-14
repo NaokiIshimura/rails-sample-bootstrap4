@@ -17,9 +17,10 @@
     display: -moz-groupbox;
   }
 
+
   tbody{
     overflow-y: scroll;
-    height: 100%;
+    height: 80%;
     width: 100%;
     position: absolute;
   }
@@ -44,14 +45,16 @@
       width:90%; height:35%;">
 
     <table class="table">
-      <tbody>
+      <thead>
       <tr>
         <th>test</th>
         <th>test</th>
         <th>test</th>
       </tr>
+      </thead>
+      <tbody>
       <% @location.each_with_index do |l, i|%>
-          <tr class="table-row" data-idx="<%= i %>">
+          <tr class="table-row" data-idx="<%= i %>" >
             <td><%= i %></td>
             <td><%=l[:lat]%></td>
             <td><%=l[:lng]%></td>
@@ -132,16 +135,19 @@
             console.log('click');
 
             // data-idx に指定されてる値を取得
-            i = $(this).data("idx");
-            console.log(i);
+            var i = $(this).data("idx");
+            //console.log(i);
 
             // markerの緯度経度を取得
             var pos = gmarkers[i].getPosition();
             var lat = pos.lat();
             var lng = pos.lng();
 
-            console.log(lat);
-            console.log(lng);
+            //console.log(lat);
+            //console.log(lng);
+
+            // 枠線を表示する
+            draw_line($(this))
 
             // 中心位置を変更
             map.panTo(new google.maps.LatLng(lat - 0.006 ,lng));
@@ -149,4 +155,74 @@
             google.maps.event.trigger(gmarkers[i], "click");
         });
     });
+
+    // 枠線を表示する
+    function draw_line (selected_row) {
+        $("tbody tr").each(function(){
+            if ($(this).is(selected_row) ){
+                // 枠線を表示
+                $(this).css('border', '#ff0000 solid 2px');
+            }else{
+                // 枠線を削除
+                $(this).css('border', '');
+            }
+        })
+    }
+
+    // スクロール済みの行
+    var scrolled_row = null;
+
+    // スクロールに応じた実行
+    jQuery(function(){
+        $("tbody").scroll(function(){
+            //console.log('scroll');
+
+            // スクロールするエレメントの高さ
+            //var max_scroll_count = $('tbody').offset().top;
+            var max_scroll_count = $('tbody').height()
+            //console.log(max_scroll_count);
+
+            // スクロールした高さ
+            var scroll_count = $('tbody').scrollTop();
+            //console.log(scroll_count);
+
+            // 列の数
+            var table_row_count = $("tbody tr").length;
+
+            // 1行あたりの行の高さ
+            var row_height = max_scroll_count / table_row_count
+            //console.log(row_height);
+
+            // 全体の何割スクロールしたか？
+            scroll_raito = scroll_count / max_scroll_count
+            //console.log( scroll_raito) ;
+
+            //var focused_row = Math.ceil(scroll_raito * table_row_count)
+            var focused_row = Math.floor(scroll_raito * table_row_count)
+            //console.log( focused_row );
+
+            if (scrolled_row != focused_row){
+
+                scrolled_row = focused_row
+
+                var element = $('tbody tr').eq(focused_row)
+                //console.log(element)
+
+                // 枠線を表示する
+                draw_line(element)
+
+                // markerの緯度経度を取得
+                var i = focused_row
+                var pos = gmarkers[i].getPosition();
+                var lat = pos.lat();
+                var lng = pos.lng();
+
+                // 中心位置を変更
+                map.panTo(new google.maps.LatLng(lat - 0.006 ,lng));
+                // ウィンドウを開く
+                google.maps.event.trigger(gmarkers[i], "click");
+
+            }
+        })
+    })
 </script>
