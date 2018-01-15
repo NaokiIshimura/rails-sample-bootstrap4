@@ -179,8 +179,9 @@
 
             // スクロールするエレメントの高さ
             //var max_scroll_count = $('tbody').offset().top;
-            var max_scroll_count = $('tbody').height()
-            //console.log(max_scroll_count);
+            //var max_scroll_count = $('tbody').height();
+            var max_scroll_count = this.clientHeight;
+            // console.log(max_scroll_count);
 
             // スクロールした高さ
             var scroll_count = $('tbody').scrollTop();
