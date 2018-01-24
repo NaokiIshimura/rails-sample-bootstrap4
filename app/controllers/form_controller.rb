@@ -13,7 +13,7 @@ class User
   # enum is not available.
   # enum sex: { male: 0, female: 1 }
   def get_sex_type
-    self.sex == 0 ? 'male' : 'female'
+    sex == 0 ? 'male' : 'female'
   end
 end
 
@@ -24,6 +24,9 @@ class FormController < ApplicationController
 
   def output
     @user = User.new(user_params)
+
+    flash[:notice] = 'これはnoticeです。'
+    flash[:alert]  = 'これはalertです。'
   end
 
   private
@@ -31,5 +34,4 @@ class FormController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :age, :sex)
   end
-
 end

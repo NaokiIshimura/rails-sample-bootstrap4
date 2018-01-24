@@ -1,3 +1,10 @@
+<% if notice.present? %>
+  <p id="notice" class="class: alert alert-info"><%= notice.html_safe %></p>
+<% end %>
+<% if alert.present? %>
+  <p id="alert" class="class: alert alert-danger"><%= alert.html_safe %></p>
+<% end %>
+
 <div class="col-md-8 col-md-offset-2">
 
   <div class="form-group row">
