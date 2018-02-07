@@ -1,0 +1,48 @@
+<style>
+  /* https://www.bootply.com/MWwJdmbbGU */
+  /* CSS used here will be applied after bootstrap.css */
+  .jumbotron {
+    position: relative;
+    z-index: -2;
+
+    /* https://teratail.com/questions/55606 */
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+  }
+
+  #video-background {
+    /*
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+    width: 100%;
+    */
+
+    /* https://teratail.com/questions/55606 */
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+</style>
+
+<!-- assets ディレクトリに配置すると、iPhoneで自動再生されないので注意 -->
+<div class="jumbotron">
+  <video id="video-background" src="/movie/movie.mp4" loop autoplay muted playsinline>
+  </video>
+  <div class="container">
+    <div class="carousel-caption text-center" style="bottom:0px">
+      <h1 style="text-shadow: 0 0 10px #000;">Welcome</h1>
+      <p style="text-shadow: 0 0 10px #000;">xxxxx xxxxx xxxxxx.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>test</h2>
+  <h3>test</h3>
+</div>

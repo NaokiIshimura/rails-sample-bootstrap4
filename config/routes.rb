@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'about' => 'static_pages#about'
   post 'about' => 'static_pages#about'
   get 'help' => 'static_pages#help'
+  get 'movie' => 'static_pages#movie'
 
   # form
   get 'form' => 'form#input'
