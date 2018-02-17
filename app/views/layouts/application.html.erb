@@ -17,6 +17,10 @@
       <%= yield %>
       <%= render 'layouts/footer' %>
 
+<% elsif request.path_info == map_filter_path %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+
 <% elsif request.path_info == movie_path %>
     <%= yield %>
     <%= render 'layouts/footer' %>
