@@ -26,6 +26,7 @@ marker_clear();
 
 <% end %>
 
+$('#<%= @filter %>').css('background-color', 'red');
 $('#<%= @filter %>').attr('onmouseover', 'this.style.backgroundColor=\'red\'');
 $('#<%= @filter %>').attr('onmouseout', 'this.style.backgroundColor=\'red\'');
 

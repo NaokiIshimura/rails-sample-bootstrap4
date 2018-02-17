@@ -48,12 +48,12 @@
 
     <% @filter_list.each do |filter_name| %>
         <a class="col text-center"
-             style="background-color: <%= @filter == filter_name ? 'red' : 'yellow' %>"
-             onmouseover="this.style.backgroundColor='red'"
-             onmouseout="this.style.backgroundColor='<%= @filter == filter_name ? 'red' : 'yellow' %>'"
-             href="<%= map_filter_path %>?filter=<%= filter_name %>"
-             data-remote="true"
-             id="<%= filter_name %>">
+           style="background-color: <%= @filter == filter_name ? 'red' : 'yellow' %>"
+           onmouseover="this.style.backgroundColor='red'"
+           onmouseout="this.style.backgroundColor='<%= @filter == filter_name ? 'red' : 'yellow' %>'"
+           href="<%= map_filter_path %>?filter=<%= filter_name %>"
+           data-remote="true"
+           id="<%= filter_name %>">
           <%= filter_name %>
         </a>
     <% end %>
@@ -117,7 +117,7 @@
         marker_set();
     }
 
-    function marker_set(){
+    function marker_set() {
         // マーカーを設置する
         google.maps.event.addListener(map, "click", function () {
             infowindow.close();
@@ -153,7 +153,7 @@
     }
 
     // マーカーを削除する
-    function marker_clear(){
+    function marker_clear() {
 
         for (var i = 0; i < gmarkers.length; i++) {
             gmarkers[i].setMap(null);
@@ -217,7 +217,7 @@
         })
     }
 
-    function marker_clear(){
+    function marker_clear() {
 
         for (var i = 0; i < gmarkers.length; i++) {
             gmarkers[i].setMap(null);
@@ -226,4 +226,39 @@
     }
 
 
+</script>
+
+<!-- スクロール禁止 -->
+<!-- https://qiita.com/noraworld/items/2834f2e6f064e6f6d41a -->
+
+<!-- iOS 以外での実現方法 -->
+<style>
+  html, body {
+    overflow: hidden;
+  }
+</style>
+
+<!-- iOS でページ全体のスクロールを無効にする方法 -->
+<script>
+  window.addEventListener('touchmove', function(event) {
+  event.preventDefault();
+  });
+</script>
+
+<!-- iPhoneのSafariでページを拡大縮小させない方法 -->
+<!-- http://iphone.f-tools.net/html5/Kakudai-Kinsi.html -->
+<script>
+    /* ピッチインピッチアウトによる拡大縮小を禁止 */
+    document.documentElement.addEventListener('touchstart', function (e) {
+        if (e.touches.length >= 2) {e.preventDefault();}
+    }, false);
+    /* ダブルタップによる拡大を禁止 */
+    var t = 0;
+    document.documentElement.addEventListener('touchend', function (e) {
+        var now = new Date().getTime();
+        if ((now - t) < 350){
+            e.preventDefault();
+        }
+        t = now;
+    }, false);
 </script>
