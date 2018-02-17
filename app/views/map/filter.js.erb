@@ -1,0 +1,38 @@
+//console.log('ajax');
+//console.log('filter:<%= @filter %>');
+
+marker_clear();
+
+//marker_set();
+
+//function marker_set(){
+    // マーカーを設置する
+    google.maps.event.addListener(map, "click", function () {
+        infowindow.close();
+    });
+    <% @location.each_with_index do |l, i|%>
+    var point = new google.maps.LatLng(<%=l[:lat]%>, <%=l[:lng]%>);
+    var marker = create_maker(point, "<a href='#ttl01' target='_top'>タイトル<%= i %></a>");
+    <% end %>
+    infowindow = new google.maps.InfoWindow();
+//}
+
+// フィルタの背景色を変更
+<% @filter_list.each do |filter_name| %>
+
+  $('#<%= filter_name %>').css('background-color', 'yellow');
+  $('#<%= filter_name %>').attr('onmouseover', 'this.style.backgroundColor=\'red\'');
+  $('#<%= filter_name %>').attr('onmouseout', 'this.style.backgroundColor=\'yellow\'');
+
+<% end %>
+
+$('#<%= @filter %>').attr('onmouseover', 'this.style.backgroundColor=\'red\'');
+$('#<%= @filter %>').attr('onmouseout', 'this.style.backgroundColor=\'red\'');
+
+// テーブルのボディ列を削除
+$('.table tbody tr').remove();
+// テーブルのボディ列を追加
+
+<% @location.each_with_index do |l, idx| %>
+  $('.table tbody').append('<tr><td><%=idx%></td><td><%=l[:lat]%></td><td><%=l[:lng]%></td></tr>');
+<% end %>
