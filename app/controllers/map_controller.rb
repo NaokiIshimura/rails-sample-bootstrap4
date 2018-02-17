@@ -19,7 +19,7 @@ class MapController < ApplicationController
     # 円
     @radius = 100
     
-     #フィルタ
+    #フィルタ
     @filter_list = %w(filter_1 filter_2 filter_3 filter_4)
     
     @filter = params[:filter]
@@ -32,11 +32,25 @@ class MapController < ApplicationController
   
   private
   
-  def set_location(filter = 'filter_1')
-  
+  def set_location(filter = nil)
+    
+    p filter
+    
     base_data = []
-  
-    if filter[-1].to_i.odd? == true
+    
+    if filter == nil
+      base_data = [
+          { lat: 35.681298 + 0.005, lng: 139.766247 },
+          { lat: 35.681298 - 0.005, lng: 139.766247 },
+          { lat: 35.681298, lng: 139.766247 + 0.005 },
+          { lat: 35.681298, lng: 139.766247 - 0.005 },
+          { lat: 35.681298 + 0.01, lng: 139.766247 },
+          { lat: 35.681298 - 0.01, lng: 139.766247 },
+          { lat: 35.681298, lng: 139.766247 + 0.01 },
+          { lat: 35.681298, lng: 139.766247 - 0.01 },
+      ]
+    
+    elsif filter[-1].to_i.odd? == true
       base_data = [
           { lat: 35.681298 + 0.005, lng: 139.766247 },
           { lat: 35.681298 - 0.005, lng: 139.766247 },
