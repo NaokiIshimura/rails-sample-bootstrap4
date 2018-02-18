@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'video/index'
+
   root 'static_pages#home'
 
   # static_pages
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   post 'about' => 'static_pages#about'
   get 'help' => 'static_pages#help'
   get 'movie' => 'static_pages#movie'
+  get 'video' => 'video#index'
 
   # form
   get 'form' => 'form#input'
