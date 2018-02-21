@@ -12,4 +12,8 @@ class StaticPagesController < ApplicationController
   def movie
   
   end
+
+  def movie_sample
+
+  end
 end

@@ -36,12 +36,14 @@
           </div>
         </li>
 
-        <li class="nav-item <%= 'active' if request.path_info == movie_path %>">
-          <a class="nav-link" href="<%= movie_path %>">Movie</a>
-        </li>
-
-        <li class="nav-item <%= 'active' if request.path_info == video_path %>">
-          <a class="nav-link" href="<%= video_path %>">Video</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="mapDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Movie
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<%= movie_path %>">Movie</a>
+            <a class="dropdown-item" href="<%= movie_sample_path %>">Movie Sample</a>
+          </div>
         </li>
 
         <li class="nav-item dropdown">
