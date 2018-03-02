@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'movie' => 'static_pages#movie'
   get 'movie_sample' => 'static_pages#movie_sample'
+  get 'css_animation' => 'static_pages#css_animation'
 
   # form
   get 'form' => 'form#input'

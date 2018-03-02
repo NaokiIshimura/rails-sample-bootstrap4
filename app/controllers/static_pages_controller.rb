@@ -16,4 +16,8 @@ class StaticPagesController < ApplicationController
   def movie_sample
 
   end
+
+  def css_animation
+
+  end
 end
