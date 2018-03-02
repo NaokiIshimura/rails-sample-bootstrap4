@@ -1,9 +1,6 @@
 # rails-sample-bootstrap4
 
-Samples of Rails + Bootstrap 4 
-
-## Official
-[Bootstrap · The most popular HTML, CSS, and JS library in the world\.](https://getbootstrap.com/)
+Samples of Rails + Bootstrap4 
 
 ## Preview
 https://nameless-peak-15566.herokuapp.com
@@ -11,6 +8,11 @@ https://nameless-peak-15566.herokuapp.com
 ## Environment variable
 
 - GOOGLE_MAP_API_KEY
+
+---
+
+## Official
+[Bootstrap · The most popular HTML, CSS, and JS library in the world\.](https://getbootstrap.com/)
 
 ## CodePen
 - [Bootstrap4 tooltip with image](https://codepen.io/NaokiIshimura/pen/XzOJBL)
