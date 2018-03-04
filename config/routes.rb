@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get 'form' => 'form#input'
   get 'form/output' => 'form#input'
   post 'form/output'
+
+  # validation
+  get 'validation' => 'validation#form'
+  post 'validation' => 'validation#form'
   
   # map
   get 'map' => 'map#sample'

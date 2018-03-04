@@ -11,11 +11,15 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item <%= 'active' if request.path_info == root_path %>">
-          <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item <%= 'active' if request.path_info == form_path %>">
           <a class="nav-link" href="<%= form_path %>">Form</a>
+        </li>
+
+        <li class="nav-item <%= 'active' if request.path_info == validation_path %>">
+          <a class="nav-link" href="<%= validation_path %>">Validation <span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item <%= 'active' if request.path_info == css_animation_path %>">
