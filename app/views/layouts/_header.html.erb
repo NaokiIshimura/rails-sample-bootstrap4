@@ -10,10 +10,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item <%= 'active' if request.path_info == root_path %>">
-          <a class="nav-link" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
-        </li>
-
         <li class="nav-item <%= 'active' if request.path_info == form_path %>">
           <a class="nav-link" href="<%= form_path %>">Form</a>
         </li>
