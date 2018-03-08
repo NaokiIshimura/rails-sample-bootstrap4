@@ -9,25 +9,20 @@
 </head>
 <body>
 <%= render 'layouts/header' %>
-<% if request.path_info == root_path %>
+
+<% case request.path_info %>
+
+<% when root_path %>
     <main role="main">
       <%= yield %>
       <%= render 'layouts/footer' %>
     </main>
 
-<% elsif request.path_info == map_path %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
+<% when map_path, %>
+    <% map_filter_path, %>
+    <% movie_path, %>
+    <% css_animation_path %>
 
-<% elsif request.path_info == map_filter_path %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-
-<% elsif request.path_info == movie_path %>
-    <%= yield %>
-    <%= render 'layouts/footer' %>
-
-<% elsif request.path_info == css_animation_path %>
     <%= yield %>
     <%= render 'layouts/footer' %>
 
@@ -38,5 +33,6 @@
     </div>
     <%= render 'layouts/footer' %>
 <% end %>
+
 </body>
 </html>
