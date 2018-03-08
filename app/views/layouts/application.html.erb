@@ -11,7 +11,6 @@
 <%= render 'layouts/header' %>
 
 <% case request.path_info %>
-
 <% when root_path %>
     <main role="main">
       <%= yield %>
@@ -32,6 +31,7 @@
       <hr class="featurette-divider">
     </div>
     <%= render 'layouts/footer' %>
+
 <% end %>
 
 </body>
