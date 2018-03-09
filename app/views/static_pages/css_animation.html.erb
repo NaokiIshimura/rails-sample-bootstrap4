@@ -1,4 +1,5 @@
 <style>
+
   /* CSSアニメーションの設定 */
   .korokoro {
     animation: korokoro 2.5s linear 0s 1;
@@ -57,11 +58,22 @@
 </script>
 
 
+<!-- vh, vw 指定 -->
 <div style="position:relative;width: 100%;height: auto;">
   <!-- メモ leftにはvhではなくvwを指定することで横幅が狭くなってもスタイルが崩れなくできる -->
   <img id="logo_ruby" class="korokoro" src="<%= asset_path 'logo_ruby.png' %>" alt="" style="position:absolute;top:12vw;left:25vw" width="50%">
   <img id="logo_star_1" class="kyupeen_1" src="<%= asset_path 'logo_star.png' %>" alt="" style="position:absolute;top:10vw;left:23vw" width="10%">
   <img id="logo_star_2" class="kyupeen_2" src="<%= asset_path 'logo_star.png' %>" alt="" style="position:absolute;top:35vw;left:65vw" width="10%">
+  <img src="<%= asset_path 'logo_base.png' %>" alt="" style="width:100%">
+</div>
+
+<hr>
+
+<!-- % 指定 -->
+<div style="position:relative;width: 100%;height: auto;">
+  <img id="logo_ruby" class="korokoro" src="<%= asset_path 'logo_ruby.png' %>" alt="" style="position:absolute;top:12%;left:25%" width="50%">
+  <img id="logo_star_1" class="kyupeen_1" src="<%= asset_path 'logo_star.png' %>" alt="" style="position:absolute;top:10%;left:23%" width="10%">
+  <img id="logo_star_2" class="kyupeen_2" src="<%= asset_path 'logo_star.png' %>" alt="" style="position:absolute;top:50%;left:65%" width="10%">
   <img src="<%= asset_path 'logo_base.png' %>" alt="" style="width:100%">
 </div>
 
