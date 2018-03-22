@@ -142,6 +142,32 @@
             // ウィンドウを開く
             infowindow.setContent(html);
             infowindow.open(map, marker);
+
+
+            // GoogleMapのInfoWindowのカスタマイズ方法
+            // https://taroken.org/googlemap-infowindow-customize/
+            // ここでinfoWindowのスタイリング
+            var iwOuter = $('.gm-style-iw');
+            // prevで直前の兄弟要素を取得
+            var iwBackground = iwOuter.prev();
+            // nextで直後の兄弟要素を取得
+            var iwCloseBtn = iwOuter.next();
+            // 背景のshadowを消す
+            iwBackground.children(':nth-child(2)').css("display", "none");
+            // 白い背景を消す
+            iwBackground.children(':nth-child(4)').css("display", "none");
+            // 下のとんがりコーンの影を消す
+            iwBackground.children(':nth-child(1)').css("display", "none");
+            // なんかまだとんがりコーンの影がしつこく出てくるからここで消す(左の影)
+            iwBackground.children(':nth-child(3)').children(':nth-child(1)').children(':nth-child(1)').css("box-shadow", "none");
+            // なんかまだとんがりコーンの影がしつこく出てくるからここで消す(右の影)
+            iwBackground.children(':nth-child(3)').children(':nth-child(2)').children(':nth-child(1)').css("box-shadow", "none");
+            // ここでcssいじるのめんどいからクラスをつける
+            iwCloseBtn.addClass("closebtn");
+            // fontawesomeのcloseボタンを追加
+            iwCloseBtn.prepend('<i class="fa fa-times-circle" aria-hidden="true"></i>');
+
+
         });
         gmarkers[i] = marker;
         i++;
