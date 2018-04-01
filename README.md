@@ -1,9 +1,12 @@
 # rails-sample-bootstrap4
 
-Samples of Rails + Bootstrap4 
+Samples of Rails + Bootstrap4
 
 ## Preview
 https://nameless-peak-15566.herokuapp.com
+
+## PWA
+https://rails-pwa-sample.herokuapp.com/
 
 ## Environment variable
 
