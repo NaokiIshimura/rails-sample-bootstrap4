@@ -8,6 +8,11 @@ https://nameless-peak-15566.herokuapp.com
 ## PWA
 https://rails-pwa-sample.herokuapp.com/
 
+```
+# deploy to heroku 
+$ git push heroku-pwa pwa:master --force
+```
+
 ## Environment variable
 
 - GOOGLE_MAP_API_KEY
